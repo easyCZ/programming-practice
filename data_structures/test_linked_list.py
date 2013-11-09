@@ -32,7 +32,7 @@ class TestLinkedList(unittest.TestCase):
     def test_add_from_list(self):
         node_list = [Node(i) for i in range(10)]
         llist = LinkedList()
-        llist.add_from_list(node_list)
+        llist.add_from_node_list(node_list)
         self.assertEqual(10, llist.length)
 
 

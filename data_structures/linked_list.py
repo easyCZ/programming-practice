@@ -1,5 +1,8 @@
 
 class Node:
+    """
+    Common Node implementation for a LinkedList. Equality of value and to string are supported.
+    """
 
     def __init__(self, value=None, next=None):
         self.value = value
@@ -29,11 +32,18 @@ class LinkedList:
         self.length -= 1 if self.length > 0 else None
 
     def add_first(self, node):
+        """
+        Add a node to the front of the LinkedList.
+        """
         node.next = self.head
         self.head = node
         self.__increment()
 
     def add(self, node):
+        """
+        Adds a Node to the tail.
+        TODO: Make LinkedList.last pointer and avoid looping.
+        """
         if self.length == 0:
             self.head = node
             self.__increment()
@@ -46,6 +56,9 @@ class LinkedList:
             if self.length == 1:
                 self.head = node
 
-    def add_from_list(self, node_list):
+    def add_from_node_list(self, node_list):
+        """
+        Wrapper for adding elements from a list of Nodes.
+        """
         for node in node_list:
             self.add(node)
