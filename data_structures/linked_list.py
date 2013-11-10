@@ -23,6 +23,7 @@ class LinkedList:
 
     def __init__(self):
         self.head = None
+        self.last = None
         self.length = 0
 
     def __increment(self):
@@ -38,23 +39,18 @@ class LinkedList:
         node.next = self.head
         self.head = node
         self.__increment()
+        if self.length == 1:
+            self.last = node
 
     def add(self, node):
         """
         Adds a Node to the tail.
-        TODO: Make LinkedList.last pointer and avoid looping.
         """
         if self.length == 0:
-            self.head = node
-            self.__increment()
+            self.head = self.last = node
         else:
-            curr = self.head
-            while curr.next is not None:
-                curr = curr.next
-            curr.next = node
-            self.__increment()
-            if self.length == 1:
-                self.head = node
+            self.last.next = self.last = node
+        self.__increment()
 
     def add_from_node_list(self, node_list):
         """
